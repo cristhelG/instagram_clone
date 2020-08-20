@@ -25,8 +25,11 @@ class HomePage extends StatelessWidget {
       backgroundColor: Color(0xFFF9F9F9),
       elevation: 0,
       centerTitle: true,
-      title: Text("Instagram Clone",
-      style: TextStyle(color: Colors.black),
+      title: Container(
+        margin: EdgeInsets.only(top: 10),
+        child: SizedBox(
+          height: 40,
+          child: Image.asset('assets/img/logo-instagram.png')),
       ),
       leading: IconButton(
         onPressed: (){},
@@ -55,7 +58,25 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _labels(){
-    return Text("Home");
+    return Container(
+      margin: EdgeInsets.only(top: 5, left: 15, right:15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text("Stories",
+          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          ),
+          Row(
+            children: <Widget>[
+              Icon(Icons.arrow_right),
+              Text("Watch all",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
 }
