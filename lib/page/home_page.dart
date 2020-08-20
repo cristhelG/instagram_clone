@@ -9,7 +9,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF9F9F9),
       appBar: _appBar(),
-      body: _labels(),
+      body: Column(
+        children: <Widget>[
+          _labels(),
+          _stories(),
+        ],
+      ),
     );
   }
 
@@ -76,6 +81,63 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _stories(){
+    return Container(
+      height: 105,
+      width: double.infinity,
+      margin: EdgeInsets.only(top: 10, left: 5),
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        children: <Widget>[
+          _createStorie(Colors.blue),
+          _createStorie(Colors.pink),
+          _createStorie(Colors.blue),
+          _createStorie(Colors.pink),
+          _createStorie(Colors.blue),
+          _createStorie(Colors.pink),
+          _createStorie(Colors.blue),
+          _createStorie(Colors.blue),
+          _createStorie(Colors.pink),
+          _createStorie(Colors.blue),
+        ],
+      ),
+    );
+  }
+
+  Widget _createStorie(Color color){
+    return Column(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(50),
+            border: Border.all(
+              width: 3,
+              color: Color(0xFF8E44AD),
+            )
+            ),
+          child: Container(
+            padding: EdgeInsets.all(2),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(50),
+                      child: Image(
+                image: NetworkImage('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-1038241336a-1587582575.jpg?crop=1.00xw:0.669xh;0,0.0833xh&resize=640:*'),
+                height: 65,
+                width: 65,
+                fit: BoxFit.cover,
+                ),
+            ),
+          ),
+        ),
+          SizedBox(height: 6),
+        Text("Cemilé",
+          style: TextStyle(fontSize: 13),
+        )
+      ],
     );
   }
 
