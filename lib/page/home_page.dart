@@ -1,8 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:instagram_clone/models/stories_model.dart';
+import 'package:instagram_clone/providers/stories_provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  StoriesProvider storiesProvider = new StoriesProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -92,23 +102,14 @@ class HomePage extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        children: <Widget>[
-          _createStorie(Colors.blue),
-          _createStorie(Colors.pink),
-          _createStorie(Colors.blue),
-          _createStorie(Colors.pink),
-          _createStorie(Colors.blue),
-          _createStorie(Colors.pink),
-          _createStorie(Colors.blue),
-          _createStorie(Colors.blue),
-          _createStorie(Colors.pink),
-          _createStorie(Colors.blue),
-        ],
+        children: storiesProvider.getStories().map((story){
+          return _createStorie(story);
+        }).toList(),
       ),
     );
   }
 
-  Widget _createStorie(Color color){
+  Widget _createStorie(Story story){
     return Column(
       children: <Widget>[
         Container(
@@ -125,7 +126,7 @@ class HomePage extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
                       child: Image(
-                image: NetworkImage('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gettyimages-1038241336a-1587582575.jpg?crop=1.00xw:0.669xh;0,0.0833xh&resize=640:*'),
+                image: NetworkImage(story.photo),
                 height: 65,
                 width: 65,
                 fit: BoxFit.cover,
@@ -134,11 +135,10 @@ class HomePage extends StatelessWidget {
           ),
         ),
           SizedBox(height: 6),
-        Text("Cemilé",
+        Text(story.name,
           style: TextStyle(fontSize: 13),
         )
       ],
     );
   }
-
 }
