@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.circular(50),
                               child: Image(
                                 image: NetworkImage(
-                                  'https://s3.amazonaws.com/uifaces/faces/twitter/bruno_mart/128.jpg'),
+                                  'https://s3.amazonaws.com/uifaces/faces/twitter/scips/128.jpg'),
                                 height: 45,
                                 width: 45,
                                 fit: BoxFit.cover,
@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
         ),
-                Text('Elaina',
+                Text('Cristhel',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)
                 ),
                 Expanded(child: SizedBox()),
@@ -240,7 +240,48 @@ class _HomePageState extends State<HomePage> {
                   ),
               ],
             ),
-          )
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 17, right: 17, bottom: 10),
+            child: Row(
+              children: <Widget>[
+                Text('Likes by Crhistian, Alex 108 others')
+                ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.only(left: 17, right: 17, bottom: 10),
+            child: Column(
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Cristhel ',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15)),
+                      TextSpan(
+                        text: 'Perferendis nisi qui. Omnis sequi quia eius. Expedita ut mollitia quasi officia dignissimos in. Voluptas quaerat ut animi nihil expedita aut. Asperiores commodi blanditiis. Sunt non exercitationem.',
+                        style: TextStyle(
+                          color: Colors.black,))
+                    ]),
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 10,
+                  ),
+                  child: Text(
+                    'Julio 27',
+                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                    ),
+                ),
+              ],
+            ),
+          ),
         ],
       )
     );
