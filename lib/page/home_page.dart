@@ -19,11 +19,19 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Color(0xFFF9F9F9),
       appBar: _appBar(),
-      body: Column(
-        children: <Widget>[
-          _labels(),
-          _stories(),
-        ],
+      body: SingleChildScrollView(
+              child: Column(
+          children: <Widget>[
+            _labels(),
+            _stories(),
+            Divider(
+              color: Colors.grey,
+              height: 0,
+              thickness: 0.5,
+            ),
+            _post(),
+          ],
+        ),
       ),
     );
   }
@@ -139,6 +147,102 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(fontSize: 13),
         )
       ],
+    );
+  }
+
+  Widget _post(){
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 500,
+      child: ListView.builder(
+        itemCount: 50,
+        itemBuilder: (context, i){
+          return _createPost();
+        }),
+    );
+  }
+
+  Widget _createPost(){
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Container(
+            child: Row(
+              children: <Widget>[
+                Container(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: 12, left: 18, bottom: 12, right: 12,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                              child: Image(
+                                image: NetworkImage(
+                                  'https://s3.amazonaws.com/uifaces/faces/twitter/bruno_mart/128.jpg'),
+                                height: 45,
+                                width: 45,
+                                fit: BoxFit.cover,
+                                ),
+                    ),
+                  ),
+        ),
+                Text('Elaina',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)
+                ),
+                Expanded(child: SizedBox()),
+                IconButton(
+                  icon: Icon(Icons.more_horiz), 
+                  iconSize: 30,
+                  onPressed: (){},
+                  ),
+              ],
+            ),
+          ),
+          FadeInImage(
+            placeholder: AssetImage('assets/img/loading.gif'),
+            image: NetworkImage('http://lorempixel.com/640/480/business'),),
+          Container(
+            padding: EdgeInsets.only(top: 5, left: 7, right: 7, bottom: 1),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Image(
+                        image: AssetImage('assets/img/heart.png'),
+                        width: 30,
+                        ), 
+                      onPressed: (){},
+                      ),
+                    IconButton(
+                      icon: Image(
+                        image: AssetImage('assets/img/comment.png'),
+                        width: 30,
+                        ), 
+                      onPressed: (){},
+                      ),
+                    IconButton(
+                      icon: Image(
+                        image: AssetImage('assets/img/send.png'),
+                        width: 30,
+                        ), 
+                      onPressed: (){},
+                      ),
+                  ],
+                ),
+                IconButton(
+                  icon: Image(
+                    image: AssetImage('assets/img/save_o.png'),
+                    width: 30,
+                    ), 
+                  onPressed: (){},
+                  ),
+              ],
+            ),
+          )
+        ],
+      )
     );
   }
 }
