@@ -153,8 +153,9 @@ class _HomePageState extends State<HomePage> {
   Widget _post(){
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 500,
       child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         itemCount: 50,
         itemBuilder: (context, i){
           return _createPost();
